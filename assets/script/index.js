@@ -43,6 +43,7 @@ onEvent('click', setAlarmButton, () => {
     validateInput();
 })
 
+
 // Functions
 
 function getTime() {
@@ -54,6 +55,7 @@ function getTime() {
 
     if (currentTimeZone === userInput.innerText) {
         playAlarm();
+        stopAudio.style.display = 'block';
     }
 }
 
@@ -65,8 +67,8 @@ function validateInput() {
     if (hoursRegex.test(hoursInput.value) && minutesRegex.test(minutesInput.value)) {
         userInput.innerText = `${hoursInput.value}:${minutesInput.value}`;
     } else {
-        hoursInput.value = '0-23';
-        minutesInput.value = '0-59';
+        hoursInput.placeholder = '0-23';
+        minutesInput.placeholder= '0-59';
     }
 }
 
