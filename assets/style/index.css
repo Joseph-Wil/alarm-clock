@@ -66,4 +66,11 @@ input[type="button"] {
     color: #18171F;
 }
 
+/***    Hover   ***/
+
+input[type="button"]:hover {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    background-color: #04682b;
+}
 
