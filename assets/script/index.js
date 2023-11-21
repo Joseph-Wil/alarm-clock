@@ -18,9 +18,10 @@ function selectAll(selector, parent = document) {
 
 const currentTime = select('.time');
 let userInput = select('span');
-let hours = select('.hours').setAttribute('maxlength', '2');
-let minutes = select('.minutes').setAttribute('maxlength', '2');
+let hoursInput = select('.hours');
+let minutesInput = select('.minutes');
 let setAlarmButton = select('.set-alarm');
+const alarmAudio = new Audio ('./assets/media/alarm-clock.mp3');
 
 
 const time = new Date();
@@ -38,8 +39,8 @@ onEvent('load', window, () => {
     updateTime();
 })
 
-onEvent('click', () => {
-    setAlarmButton();
+onEvent('click', setAlarmButton, () => {
+    validateInput();
 })
 
 // Functions
@@ -48,7 +49,12 @@ function getTime() {
     const time = new Date();
     const currentHour = time.getHours().toString().padStart(2, '0');
     const currentMinutes = time.getMinutes().toString().padStart(2, '0');
-    currentTime.innerText = `${currentHour}:${currentMinutes}`;
+    const currentTimeZone = `${currentHour}:${currentMinutes}`;
+    currentTime.innerText = currentTimeZone;
+
+    if (currentTimeZone === userInput.innerText) {
+        playAlarm();
+    }
 }
 
 function updateTime() {
@@ -56,8 +62,14 @@ function updateTime() {
 }
 
 function validateInput() {
-    if (hoursRegex.test(hours.value) && minutesRegex.test(minutes.value)) {
-        userInput.innerText = `${hours.value}:${minutes.value}`;
-        
+    if (hoursRegex.test(hoursInput.value) && minutesRegex.test(minutesInput.value)) {
+        userInput.innerText = `${hoursInput.value}:${minutesInput.value}`;
+    } else {
+        hoursInput.value = '0-23';
+        minutesInput.value = '0-59';
     }
+}
+
+function playAlarm() {
+    alarmAudio.play();
 }

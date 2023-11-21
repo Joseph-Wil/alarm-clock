@@ -40,6 +40,10 @@ h2 {
     margin-bottom: 50px;
 }
 
+span {
+    margin-left: 20px;
+}
+
 .alarm {
     display: flex;
     width: 100%;
@@ -65,6 +69,7 @@ input[type="button"] {
     background-color: #11F76C;
     color: #18171F;
 }
+
 
 /***    Hover   ***/
 
