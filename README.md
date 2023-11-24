@@ -1,8 +1,11 @@
 # alarm-clock
+
 This is a basic alarm clock that I made using HTML, CSS and JavaScript.
+
 <br>
 
 Click [here](https://Joseph-Wil.github.io/alarm-clock/) to test.
+
 <br>
 
 ## Languages I used to create this.
